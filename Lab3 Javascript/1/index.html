@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+</head>
+<body>
+    <select id="cars1" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+    </select>
+
+    <select id="cars2" multiple>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <script>
+        document.getElementById('cars1').ondblclick = function () {
+            var optionSelected = document.getElementById('cars1').children[this.selectedIndex];
+            optionSelected.remove();
+            document.getElementById('cars2').appendChild(optionSelected);
+        }
+
+        document.getElementById('cars2').ondblclick = function () {
+            var optionSelected = document.getElementById('cars2').children[this.selectedIndex];
+            optionSelected.remove();
+            document.getElementById('cars1').appendChild(optionSelected);
+        }
+    </script>
+</body>
+</html>

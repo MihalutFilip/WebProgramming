@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+            table tr {
+                border-top: 1px solid #dddddd;
+            }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+    <table id="table">
+        <tr>
+            <th onclick="sort(0)">Fructe</th>
+            <th onclick="sort(1)">Pret</th>
+            <th onclick="sort(2)">Cantitate</th>
+        </tr>
+        <tr>
+            <td>Pere</td>
+            <td>4</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>Mere</td>
+            <td>30</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Gutui</td>
+            <td>10</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>Cirese</td>
+            <td>100</td>
+            <td>7</td>
+        </tr>
+    </table>
+
+    <script>
+        var toggleSort = -1;
+        function getDates() {
+            var rows = Array.from(document.getElementById('table').children[0].children);
+            rows.shift();
+            return rows;
+        }
+
+        function strcmp(a, b, position) {
+            if (position != 0) {
+                a = parseInt(a);
+                b = parseInt(b);
+            }
+
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        }
+
+        function sort(position) {
+            toggleSort *= -1;
+            var sortedDates = getDates().sort(function (a, b) {
+                return toggleSort*strcmp(a.children[position].innerText, b.children[position].innerText, position);
+            });
+
+            //delete dates
+            sortedDates.forEach(function (entry) {
+                entry.remove();
+            })
+
+            var table = document.getElementById('table').children[0];
+            //add dates
+            sortedDates.forEach(function (entry) {
+                table.appendChild(entry);
+            })
+        }
+    </script>
+</body>
+</html>

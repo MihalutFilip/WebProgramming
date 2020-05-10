@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            cursor: pointer;
+            width: 100px;
+        }
+        span {
+            visibility: hidden;
+        }
+        img {
+            width: 100px;
+        }
+    </style>
+    <table>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span id="1">
+                    <img src="../v2/filip.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="1">
+                    <img src="../v2/mena.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="2">
+                    <img src="../v2/catalina.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="3">
+                    <img src="../v2/crina.jfif" />
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span id="3">
+                    <img src="../v2/tibi.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="2">
+                    <img src="../v2/andrei.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="4">
+                    <img src="../v2/roberta.jfif" />
+                </span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span id="4">
+                    <img src="../v2/sami.jfif" />
+                </span>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        var firstTDSelected = null;
+
+        function tdclick(e) {
+            if (firstTDSelected == null)
+                firstTDSelected = e.path[0];
+            else {
+                var secondTDSelected = e.path[0];
+                firstTDSelected.children[0].style.visibility = 'visible';
+                secondTDSelected.children[0].style.visibility = 'visible';
+                if (firstTDSelected.children[0].id != secondTDSelected.children[0].id) { 
+                    setTimeout(() => {
+                        firstTDSelected.children[0].style.visibility = 'hidden';
+                        secondTDSelected.children[0].style.visibility = 'hidden';
+                        firstTDSelected = null;
+                    }, 300);
+                }
+                else 
+                    firstTDSelected = null;
+            }
+        }
+
+    </script>
+</body>
+</html>

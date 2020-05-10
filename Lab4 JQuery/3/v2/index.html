@@ -1,0 +1,156 @@
+﻿﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            cursor: pointer;
+            width: 100px;
+        }
+
+        span {
+            visibility: hidden;
+        }
+
+        img {
+            width: 100px;
+        }
+    </style>
+    <table>
+        <tr>
+            <td>
+                <span class="1">
+                    <img src="../v2/filip.jfif" />
+                </span>
+            </td>
+            <td>
+                <span class="3">
+                    <img src="../v2/mena.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="2">
+                    <img src="../v2/catalina.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="7">
+                    <img src="../v2/crina.jfif" />
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <span class="5">
+                    <img src="../v2/roberta.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="1">
+                    <img src="../v2/filip.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="4">
+                    <img src="../v2/andrei.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="8">
+                    <img src="../v2/tibi.jfif" />
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <span class="3">
+                    <img src="../v2/mena.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="2">
+                    <img src="../v2/catalina.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="5">
+                    <img src="../v2/roberta.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="7">
+                    <img src="../v2/crina.jfif" />
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <span class="6">
+                    <img src="../v2/sami.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="4">
+                    <img src="../v2/andrei.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="6">
+                    <img src="../v2/sami.jfif" />
+                </span>
+            </td>
+            <td >
+                <span class="8">
+                    <img src="../v2/tibi.jfif" />
+                </span>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+       var firstTDSelected = null;
+       var count = 0;
+
+        $('td').click(function () {
+            if (firstTDSelected == null || firstTDSelected == $(this)) {
+                firstTDSelected = $(this);
+                firstTDSelected.children().css({ "visibility": 'visible' });
+            }
+            else {
+                var secondTDSelected = $(this);
+                secondTDSelected.children().css({ "visibility": 'visible' });
+                if (firstTDSelected.children().attr('class') != secondTDSelected.children().attr('class')) {         
+                    setTimeout(() => {
+                        firstTDSelected.children().css({ "visibility": 'hidden' });
+                        secondTDSelected.children().css({ "visibility": 'hidden' });
+                        firstTDSelected = null;
+                    }, 300);
+                }
+                else {
+                    firstTDSelected = null;
+                    count++;
+
+                    if (count == 8)
+                        alert("Ai castigat");
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

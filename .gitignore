@@ -1,0 +1,10 @@
+node_modules/
+dist/
+bin/
+Debug/
+packages/
+Properties/
+*.sln
+*.csproj
+.vs/
+*.csproj.*

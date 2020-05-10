@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+        table tr {
+            border-top: 1px solid #dddddd;
+        }
+
+        th {
+            cursor: pointer;
+        }
+    </style>
+
+    <table id="table">
+        <tr>
+            <th onclick="sort(0)">Fructe</th>
+            <td>Pere</td>
+            <td>Mere</td>
+            <td>Cirese</td>
+            <td>Gutui</td>
+        </tr>
+        <tr>
+            <th onclick="sort(1)">Pret</th>
+            <td>4</td>
+            <td>6</td>
+            <td>40</td>
+            <td>600</td>
+        </tr>
+        <tr>
+            <th onclick="sort(2)">Cantitate</th>
+            <td>8</td>
+            <td>31</td>
+            <td>8</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <script>
+        var toggleSort = -1;
+
+        function getPositionsOfOrdonatedElements(position) {
+            var positions = [];
+            var rows = Array.from($('table').children().first().children().eq(position).children());
+            rows.shift();
+            rows.forEach((_, index) => { positions.push(index) });
+            positions.sort((a, b) => { return toggleSort*strcmp($(rows[a]).text(), $(rows[b]).text(), position) });
+            return positions;
+        }
+
+       function strcmp(a, b, position) {
+            if (position != 0) {
+                a = parseInt(a);
+                b = parseInt(b);
+            }
+
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        }
+
+        function sort(position) {
+            toggleSort *= -1;
+            var rows = Array.from($('#table').children().first().children());
+            var postions = getPositionsOfOrdonatedElements(position);
+
+            rows.forEach(row => {
+                columns = Array.from($(row).children());
+                columns.shift();
+
+                //delete dates
+                columns.forEach(column => {
+                    column.remove();
+                });
+
+                // add dates
+                postions.forEach(position => {
+                    row.append(columns[position]);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

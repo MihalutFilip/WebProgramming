@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <select id="cars1" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+    </select>
+
+    <select id="cars2" multiple>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <script>
+        $('#cars1').dblclick(function () {
+            var optionSelected =  $('#cars1').children()[this.selectedIndex];
+            optionSelected.remove();
+            $('#cars2').append(optionSelected);
+        });
+
+        $('#cars2').dblclick(function () {
+            var optionSelected =  $('#cars2').children()[this.selectedIndex];
+            optionSelected.remove();
+            $('#cars1').append(optionSelected);
+        });
+    </script>
+</body>
+</html>

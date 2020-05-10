@@ -1,0 +1,27 @@
+#list {
+	text-align: left;
+	list-style-type: none;
+	width: 20%;
+}
+
+.item{
+	display: inline-block;
+	width: 100%;
+}
+
+img {
+	width: 60%;
+	height: auto;
+	margin: 10px;
+	vertical-align: middle;
+}
+
+ul {
+  background-color: yellow;
+  display: inline-block;
+}
+
+.caption {
+	display: inline-block;
+	vertical-align: middle;
+}

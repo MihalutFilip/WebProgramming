@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <select id="brand">
+        <option value="-1"></option>
+    </select>
+
+    <select id="type">
+        <option value="-1"></option>
+    </select>
+
+    <select id="price">
+        <option value="-1"></option>
+    </select>
+
+    <select id="rating">
+        <option value="-1"></option>
+    </select>
+
+    <select id="processor">
+        <option value="-1"></option>
+    </select>
+
+    <select id="memory">
+        <option value="-1"></option>
+    </select>
+
+    <select id="storage">
+        <option value="-1"></option>
+    </select>
+
+    <select id="videoCard">
+        <option value="-1"></option>
+    </select>
+
+    <table>
+        <tr id="header">
+            <th>Brand</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Processor</th>
+            <th>Memory</th>
+            <th>Storage</th>
+            <th>Video Card</th>
+        </tr>
+
+    </table>
+
+    <script>
+        var brand = ["Asus", "HP", "Lenovo", "Dell", "Apple", "Accer", "Microsoft", "Huwei"]
+        var type = ["Home", "Ultraportable", "Gaming", "Business"];
+        var price = ["Low", "Medium", "High"];
+        var rating = ["First", "Second", "Third", "Forth", "Fifth"];
+        var processor = ["Intel Core I3", "Intel Core I5", "Intel Core I7", "Intel Core I9", "Intel Celeron", "Intel Pentium"];
+        var memory = ["Less Than 4 GB", "4 GB", "6-8 GB", "12-16 GB", "16+ GB"]
+        var storage = ["HDD", "HDD + SSD", "SSD"];
+        var videoCard = ["Integrated", "Dedicated"];
+        var laptops;
+
+        function addOptionsToSelect() {
+            brand.forEach((x, i) => $("#brand").append(new Option(x, i)));
+            type.forEach((x, i) => $("#type").append(new Option(x, i)));
+            price.forEach((x, i) => $("#price").append(new Option(x, i)));
+            rating.forEach((x, i) => $("#rating").append(new Option(x, i)));
+            processor.forEach((x, i) => $("#processor").append(new Option(x, i)));
+            memory.forEach((x, i) => $("#memory").append(new Option(x, i)));
+            storage.forEach((x, i) => $("#storage").append(new Option(x, i)));
+            videoCard.forEach((x, i) => $("#videoCard").append(new Option(x, i)));       
+        }
+
+        function addRowsToTable(laptops) {
+            laptops.forEach((laptop, index) => {
+                var tr = '<tr>';
+                tr += `<td>${brand[laptop.brand]}</td>`;
+                tr += `<td>${type[laptop.type]}</td>`;
+                tr += `<td>${price[laptop.price]}</td>`;
+                tr += `<td>${rating[laptop.rating]}</td>`;
+                tr += `<td>${processor[laptop.processor]}</td>`;
+                tr += `<td>${memory[laptop.memory]}</td>`;
+                tr += `<td>${storage[laptop.storage]}</td>`;
+                tr += `<td>${videoCard[laptop.videoCard]}</td>`;
+                tr += '</tr>';
+                $('table tr:last').after(tr);
+            });
+        }
+
+        function filterLaptops(laptop) {
+            var brand = $('#brand option:selected').val();
+            var type = $('#type option:selected').val();
+            var price = $('#price option:selected').val();
+            var rating = $('#rating option:selected').val();
+            var processor = $('#processor option:selected').val();
+            var memory = $('#memory option:selected').val();
+            var storage = $('#storage option:selected').val();
+            var videoCard = $('#videoCard option:selected').val();
+
+            return !((brand != -1 && laptop.brand != brand) ||
+                (type != -1 && laptop.type != type) ||
+                (price != -1 && laptop.price != price) ||
+                (rating != -1 && laptop.rating != rating) ||
+                (processor != -1 && laptop.processor != processor) ||
+                (memory != -1 && laptop.memory != memory) ||
+                (storage != -1 && laptop.storage != storage) ||
+                (videoCard != -1 && laptop.videoCard != videoCard));
+
+        }
+
+        $('select').on('change', function () {
+            $("table > tbody > tr").each(function () {
+                if (this.id != "header")
+                    this.remove();
+            });
+
+            addRowsToTable(laptops.filter(filterLaptops));
+        });
+
+        $.ajax({
+            url: "https://localhost:44338/api/laptop/get",
+            type: 'GET',
+            success: function (result) {
+                laptops = result;
+                addRowsToTable(result);
+                addOptionsToSelect();
+            }
+        });
+    </script>
+</body>
+</html>

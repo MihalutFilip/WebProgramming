@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    Start
+    <ul id="startList">
+    </ul>
+    Destination
+    <ul id="destinationList">
+    </ul>
+
+    <script>
+        var stations;
+
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        $(document).ready(function () {
+            $("#startList").on("click", "li.start", function (event) {
+                $('#destinationList').empty();
+                var stationId = $(event.currentTarget).attr('id');
+
+                // ajax call to take the stations for second component
+
+                $.ajax({
+                    url: "https://localhost:44338/api/stations/get/" + stationId,
+                    type: 'GET',
+                    success: function (result) {
+                        console.log(result);
+                        result.forEach(station => {
+                            $('#destinationList').append(`<li>${station.name}</li>`);
+                        });
+                    }
+                });          
+            });
+        });
+
+
+
+        $.ajax({
+            url: "https://localhost:44338/api/stations/get",
+            type: 'GET',
+            success: function (result) {
+                console.log(result);
+                stations = result;
+                stations.forEach(station => {
+                    $('#startList').append(`<li class="start" id="${station.id}">${station.name}</li>`);
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

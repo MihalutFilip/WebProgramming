@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    Ids:
+    <ul id="IdList">
+    </ul>
+    <form>
+        <label>Name:</label>
+        <input id="inputName" />
+    </form>
+    <button onclick="saveTeacher()">Save</button>
+
+    <script>
+        var currentTeacher;
+        function saveTeacher() {
+            currentTeacher.name = $("#inputName").val();
+            $.ajax({
+                type: "POST",
+                url: "https://localhost:44338/api/teacher/post",
+                data: JSON.stringify(currentTeacher),
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+            });
+        }
+
+        $("#IdList").on("click", "li.start", function (event) {
+            var id = $(event.currentTarget).attr('id');
+            if (currentTeacher && currentTeacher.name != $("#inputName").val() && confirm("Vrei sa salvezi modificarile?"))
+                saveTeacher();
+
+            $.ajax({
+                url: "https://localhost:44338/api/teacher/get/" + id,
+                type: 'GET',
+                success: function (teacher) {
+                    currentTeacher = { ...teacher };
+                    $("#inputName").val(teacher.name);
+                    console.log(teacher);
+                }
+            });
+        });
+
+        $.ajax({
+            url: "https://localhost:44338/api/teacher/get",
+            type: 'GET',
+            success: function (teacherIds) {
+                teacherIds.forEach(id => {
+                    $('#IdList').append(`<li class="start" id=${id}>${id}</li>`);
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

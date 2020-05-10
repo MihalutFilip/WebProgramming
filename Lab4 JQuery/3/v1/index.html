@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            cursor: pointer;
+        }
+        span {
+            visibility: hidden;
+        }
+    </style>
+    <table>
+        <tr>
+            <td>
+                <span>1</span>
+            </td>
+            <td>
+                <span>3</span>
+            </td>
+            <td>
+                <span>2</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>5</span>
+            </td>
+            <td>
+                <span>1</span>
+            </td>
+            <td>
+                <span>4</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>3</span>
+            </td>
+            <td>
+                <span>2</span>
+            </td>
+            <td>
+                <span>5</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span>6</span>
+            </td>
+            <td>
+                <span>4</span>
+            </td>
+            <td>
+                <span>6</span>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        var firstTDSelected = null;
+        var count = 0;
+
+        $('td').click(function () {
+            if (firstTDSelected == null || firstTDSelected == $(this)) {
+                firstTDSelected = $(this);
+                firstTDSelected.children().css({ "visibility": 'visible' });
+            }
+            else {
+                var secondTDSelected = $(this);
+                secondTDSelected.children().css({ "visibility": 'visible' });
+                if (firstTDSelected.children().text() != secondTDSelected.children().text()) {         
+                    setTimeout(() => {
+                        firstTDSelected.children().css({ "visibility": 'hidden' });
+                        secondTDSelected.children().css({ "visibility": 'hidden' });
+                        firstTDSelected = null;
+                    }, 300);
+                }
+                else {
+                    firstTDSelected = null;
+                    count++;
+
+                    if (count == 6)
+                        alert("Ai castigat");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

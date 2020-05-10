@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+            integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <label>Name:</label>
+        <input id="name" />
+    </div>
+    <div>
+        <label>Date of birth:</label>
+        <input type="date" id="date" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input type="email" id="email" />
+    </div>
+
+    <button onclick="validateInput()">Trimite</button>
+
+    <script>
+        function isNotValidName(name) {
+            let regexResult = /^[a-zA-Z ]+$/.test(name);
+            return !regexResult || name == "";
+        }
+
+        function isNotValidDate(stringDate) {
+            let date = Date.parse(stringDate);
+            let today = new Date();
+            return today < date || stringDate == "";
+        }
+
+        function isNotValidEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var regexResult = re.test(String(email).toLowerCase());
+            return !regexResult || email == "";
+        }
+
+        function validateInput() {
+            var name = $('#name');
+            var date = $('#date');
+            var email = $('#email');
+            var error = "";
+
+            
+            if (isNotValidName(name.val())) {
+                name.parent().css({ "border": '1px solid red' });
+                error += "numele ";
+            }
+            else
+                 name.parent().css({ "border": 'none' });
+
+            if (isNotValidDate(date.val())) {
+                date.parent().css({ "border": '1px solid red' });
+                error += "data ";
+            }
+            else
+                date.parent().css({ "border": 'none' });
+
+            if (isNotValidEmail(email.val())) {
+                email.parent().css({ "border": '1px solid red' });
+                error += "emailul ";
+            }
+            else
+                email.parent().css({ "border": 'none' });
+
+            if (error == "")
+                alert('Datele sunt completate corect.');
+            else
+                alert(error + "nu sunt completate corect");
+        }
+    </script>
+</body>
+</html>

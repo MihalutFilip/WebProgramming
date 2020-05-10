@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang = "ro">
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Formular de înscriere la prezentarea de proiecte</title>
+	</head>
+	<body>
+		<form id="form-div" action="POST">
+			<table id="form-table" border="2">
+				<thead>
+					<tr>
+						<th colspan="2" align="center">
+							<b>Formular de 	înscriere la prezentarea de proiecte</b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td valign="top">
+							<table id="table-user">
+								<thead>
+									<tr>
+										<th colspan="2">Date Personale
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											Nume:<br>
+											<input type="text" name="nume"  maxlength="20"><br>
+										</td>
+										<td >
+											Prenume:<br>
+											<input type="text" name="prenume" maxlength="20"><br>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											CNP:<br>
+											<input type="text" name="cnp" size="13"><br>
+										</td>
+										<td>
+											Data Nașterii:<br>
+											<input type="text" name="bday"><br>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Email:<br>
+											<input type="text" name="email"><br>
+										</td>
+										<td>
+											Telefon:<br>
+											<input type="text" name="telefon"  maxlength="10"><br>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<p>Gen:</p>
+											<input type="radio" name="gender" value="male" checked> M<br>
+											<input type="radio" name="gender" value="female"> F<br>
+										</td>
+										<td>
+											Adresă:<br>
+											<input type="text" name="adresa"><br>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span>Oraș:</span>
+											<select id="oras">
+												<option value="cluj" selected="selected">Cluj-Napoca</option>
+												<option value="dej">Dej</option>
+												<option value="brasov">Brașov</option>
+												<option value="baia">Baia Mare</option>
+												<option value="sibiu">Sibiu</option>
+												<option value="zalau">Zalău</option>
+												<option value="timisoara">Timișoara</option>
+											</select>
+										</td>
+										<td>
+											<span>Județ:</span>
+											<select id="judet">
+												<option value="cj"  selected="selected">Cluj</option>
+												<option value="bv">Brașov</option>
+												<option value="mm">Maramureș</option>
+												<option value="sb">Sibiu</option>
+												<option value="sj">Sălaj</option>
+												<option value="tm">Timiș</option>
+											</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td  valign="top">
+							<table id="form-concurs">
+								<thead>
+									<tr>
+										<th colspan="2"><strong>Date Prezentare</strong></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											Disciplină:<br>
+											<input type="checkbox" name="pw"> Programare web<br>
+											<input type="checkbox" name="bd" >Baze de date<br>
+											<input type="checkbox" name="oop" >Programare orientată obiect<br>
+											<input type="checkbox" name="mpp" >Medii de proiectare și programare<br>
+										</td> 
+										<td>
+											An:<br>
+											<select id="an">
+												<option value="1">I</option>
+												<option value="2">II</option>
+												<option value="3">III</option>
+											</select>
+										</td> 
+									</tr>
+									<tr>
+										<td>
+											Grupă:<br>
+											<input type="text" name="grupa"><br>
+										</td> 
+										<td>
+											Cadru didactic îndrumător:<br>
+											<input type="text" name="prof"><br>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											Limbaje de programare:<br>
+											<input type="text" name="lbj"><br>
+										</td> 
+										<td>
+											Titlu proiect:<br>
+											<input type="text" name="prof"><br>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<table id="form-questions">
+								 <thead>
+                                    <tr>
+                                        <th>Date organizatorice</th>
+                                    </tr>
+                                </thead>
+								<tbody>
+									<tr>
+										<td>
+											<ol type="1" start="1">
+												<li>Sunteți de acord cu regulile acestei prezentări?<br>
+													<input type="text" name="acord" value="Da" disabled></li>
+												<li>
+													<ol  type="I">
+														<li>Veți veni la prezentare cu laptopul?<br>
+															<input type="radio" name="laptop" value="da">Da
+															<input type="radio" name="laptop" value="nu">Nu
+														</li>
+														<li>Ce IDEA folosiți?<br>
+															<input type="text" name="idea"><br>
+														</li>
+													</ol>
+												</li>
+											</ol>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<ul>
+												<li>Ați predat toate laboratoarele?<br>
+                                                	<input type="radio" name="lab" value="da">Da
+													<input type="radio" name="lab" value="nu">Nu
+												</li>
+												<li>Aveți prezențe suficiente?<br>
+                                                	<input type="radio" name="prezente" value="da">Da
+													<input type="radio" name="prezente" value="nu">Nu
+												</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<ul>
+												<li>Aveți acordul cadrului didactic de la laborator pentru a prezenta acest proiect?<br>
+                                                	<input type="text" name="acord" value="Da" readonly>
+												</li>
+												<li>Ai realizat una dintre cerințele facultative?<br>
+                                                	<input type="radio" name="facultative" value="da">Da
+													<input type="radio" name="facultative" value="nu">Nu
+												</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					 <tr>
+                        <td colspan="2">
+                            <table id="form-observatii" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2"><h1>Observații</h1></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+								    <tr>
+                                       <td  colspan="2">
+											<div>
+												<h1>Vă rugăm să ne specificați eventualele probleme legate de proiect sau de prezentare.</h1>
+												<h2>Vă mulțumim!</h2>
+											</div>
+									   </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Proiect</td>
+                                        <td>Organizare prezentare</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><textarea cols="40" rows="10"></textarea></td>
+                                        <td><textarea cols="40" rows="10"></textarea></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+					<tr>
+					    <td>Folosiți user-ul primit de la facultate<br></td>
+						<td rowspan="2">
+							<fieldset>
+								<legend>Cont:</legend>
+								 User: <input type="text"><br>
+								 Passowrd: <input type="password"><br>
+							</fieldset>
+						</td>
+                                                
+					</tr>
+					<tr>
+						<td>
+                            <center><input type="submit"></center>
+                        </td>
+					</tr>
+					<tr>
+						<td>Prezentare organizată de:</td>
+						<td>
+							<a href="http://www.cs.ubbcluj.ro/" target="_blank">Visit UBB!</a>
+						</td>
+					</tr>
+					</tbody>
+			</table>
+		</form>
+	</body>
+</html>

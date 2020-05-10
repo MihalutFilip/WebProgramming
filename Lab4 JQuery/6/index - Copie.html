@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .body-container {
+            font-family: "Lato", sans-serif;
+            border: 1px solid black;
+            height: 230px;
+            width: 25%;
+        }
+
+        .tab {
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111 !important;
+            overflow-x: hidden;
+            padding-top: 16px;
+            height: 214px;
+            margin-top: 67px;
+            margin-left: 8px;
+        }
+
+        .tab button {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+        }
+
+        .tab button:hover {
+            color: #f1f1f1;
+        }
+
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        #lab1 {
+            display: block;
+        }
+
+        .main {
+          margin-left: 170px; 
+          padding: 0px 10px;
+        }
+
+        #lab2, #lab3, #lab4 {
+            visibility: hidden;
+        }
+        
+        img {
+            z-index: 100;
+            background-color: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Mihalut Filip - 224/2</h2>
+    <div class="body-container">
+        <div class="tab">
+            <button class="tablinks" onclick="openLab(event, 'lab1')">Laborator 1</button>
+            <button class="tablinks" onclick="openLab(event, 'lab2')">Laborator 2</button>
+            <button class="tablinks" onclick="openLab(event, 'lab3')">Laborator 3</button>
+            <button class="tablinks" onclick="openLab(event, 'lab4')">Laborator 4</button>
+        </div>
+
+
+        <div class="main">
+
+            <div id="lab1" class="tabcontent active">
+                <h3>HTML</h3>
+                <ul>
+                    <li><a href="./lab1/html4">HTML4</a></li>
+                    <li><a href="./lab1/html5">HTML5</a></li>
+                </ul>
+            </div>
+
+            <div id="lab2" class="tabcontent">
+                <h3>CSS</h3>
+                <ul>
+                    <li><a href="./lab2/p1/index.html">Problema 1</a></li>
+                    <li><a href="./lab2/p2/orizontal">Problema 2 (orizontal)</a></li>
+                    <li><a href="./lab2/p2/vertical">Problema 2 (vertical)</a></li>
+                    <li><a href="./lab2/p3/index.html">Problema 3</a></li>
+                    <li><a href="./lab2/p4/index.html">Problema 4</a></li>
+                    <li><a href="./lab2/p5/v1/index.html">Problema 5 (prima versiune)</a></li>
+                    <li><a href="./lab2/p5/v2/index.html">Problema 5 (a doua versiune)</a></li>
+                    <li><a href="./lab2/p6/index.html">Problema 6</a></li>
+                </ul>
+            </div>
+
+            <div id="lab3" class="tabcontent">
+                <h3>JavaScript</h3>
+                <ul>
+                    <li><a href="./lab3/1/index.html">Problema 1</a></li>
+                    <li><a href="./lab3/2/index.html">Problema 2</a></li>
+                    <li><a href="./lab3/3/v1/index.html">Problema 3 (prima versiune)</a></li>
+                    <li><a href="./lab3/3/v2/index.html">Problema 3 (a doua versiune)</a></li>
+                    <li><a href="./lab3/4/vertical/index.html">Problema 4 (vertical)</a></li>
+                    <li><a href="./lab3/4/orizontal/index.html">Problema 4 (orizontal)</a></li>
+                    <li><a href="./lab3/6/index.html">Problema 6</a></li>
+                </ul>
+            </div>
+
+            <div id="lab4" class="tabcontent">
+                <h3>JQuery</h3>
+                <ul>
+                    <li><a href="./lab4/1/index.html">Problema 1</a></li>
+                    <li><a href="./lab4/2/index.html">Problema 2</a></li>
+                    <li><a href="./lab4/3/v1/index.html">Problema 3 (prima versiune)</a></li>
+                    <li><a href="./lab4/3/v2/index.html">Problema 3 (a doua versiune)</a></li>
+                    <li><a href="./lab4/4/vertical/index.html">Problema 4 (vertical)</a></li>
+                    <li><a href="./lab4/4/orizontal/index.html">Problema 4 (orizontal)</a></li>
+                    <li><a href="./lab4/6/index.html">Problema 6</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <script>
+        function openLab(evt, labId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(labId).style.display = "block";
+            document.getElementById(labId).style.visibility = "visible";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>

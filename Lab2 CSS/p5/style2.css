@@ -1,0 +1,32 @@
+#list {
+  border-style: solid;
+  width: 750px;
+  height: 750px;
+  display: inline-block;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li{
+  float: left;
+  background-color: lightblue;
+  padding: 20px;
+  margin: 20px;
+}
+
+li img {
+  width:250px;
+  height:250px;
+}
+
+ul li .caption {
+  position: relative;
+  display: block;
+  text-align: center;
+  left: 0;
+  top: 90%;
+  width: 100%;
+  font-size: 18px;
+}

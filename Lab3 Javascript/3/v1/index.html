@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            cursor: pointer;
+        }
+        span {
+            visibility: hidden;
+        }
+    </style>
+    <table>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span>1</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>3</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>2</span>
+            </td>
+        </tr>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span>5</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>1</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>4</span>
+            </td>
+        </tr>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span>3</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>2</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>5</span>
+            </td>
+        </tr>
+        <tr>
+            <td onclick='tdclick(event)'>
+                <span>6</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>4</span>
+            </td>
+            <td onclick='tdclick(event)'>
+                <span>6</span>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        var firstTDSelected = null;
+        var count = 0;
+
+        function tdclick(e) {
+            if (firstTDSelected == null || firstTDSelected == e.path[0]) {
+                firstTDSelected = e.path[0];
+                firstTDSelected.children[0].style.visibility = 'visible';
+            }
+            else {
+                var secondTDSelected = e.path[0];
+                secondTDSelected.children[0].style.visibility = 'visible';
+                if (firstTDSelected.children[0].innerText != secondTDSelected.children[0].innerText) {         
+                    setTimeout(() => {
+                        firstTDSelected.children[0].style.visibility = 'hidden';
+                        secondTDSelected.children[0].style.visibility = 'hidden';
+                        firstTDSelected = null;
+                    }, 300);
+                }
+                else {
+                    firstTDSelected = null;
+                    count++;
+
+                    if (count == 6)
+                        alert("Ai castigat");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
